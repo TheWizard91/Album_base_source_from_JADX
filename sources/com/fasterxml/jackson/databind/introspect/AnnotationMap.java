@@ -1,0 +1,78 @@
+package com.fasterxml.jackson.databind.introspect;
+
+import com.fasterxml.jackson.databind.util.Annotations;
+import java.lang.annotation.Annotation;
+import java.util.HashMap;
+
+public final class AnnotationMap implements Annotations {
+    protected HashMap<Class<? extends Annotation>, Annotation> _annotations;
+
+    public AnnotationMap() {
+    }
+
+    private AnnotationMap(HashMap<Class<? extends Annotation>, Annotation> hashMap) {
+        this._annotations = hashMap;
+    }
+
+    public <A extends Annotation> A get(Class<A> cls) {
+        HashMap<Class<? extends Annotation>, Annotation> hashMap = this._annotations;
+        if (hashMap == null) {
+            return null;
+        }
+        return (Annotation) hashMap.get(cls);
+    }
+
+    public static AnnotationMap merge(AnnotationMap annotationMap, AnnotationMap annotationMap2) {
+        HashMap<Class<? extends Annotation>, Annotation> hashMap;
+        HashMap<Class<? extends Annotation>, Annotation> hashMap2;
+        if (annotationMap == null || (hashMap = annotationMap._annotations) == null || hashMap.isEmpty()) {
+            return annotationMap2;
+        }
+        if (annotationMap2 == null || (hashMap2 = annotationMap2._annotations) == null || hashMap2.isEmpty()) {
+            return annotationMap;
+        }
+        HashMap hashMap3 = new HashMap();
+        for (Annotation next : annotationMap2._annotations.values()) {
+            hashMap3.put(next.annotationType(), next);
+        }
+        for (Annotation next2 : annotationMap._annotations.values()) {
+            hashMap3.put(next2.annotationType(), next2);
+        }
+        return new AnnotationMap(hashMap3);
+    }
+
+    public int size() {
+        HashMap<Class<? extends Annotation>, Annotation> hashMap = this._annotations;
+        if (hashMap == null) {
+            return 0;
+        }
+        return hashMap.size();
+    }
+
+    public void addIfNotPresent(Annotation annotation) {
+        HashMap<Class<? extends Annotation>, Annotation> hashMap = this._annotations;
+        if (hashMap == null || !hashMap.containsKey(annotation.annotationType())) {
+            _add(annotation);
+        }
+    }
+
+    public void add(Annotation annotation) {
+        _add(annotation);
+    }
+
+    public String toString() {
+        HashMap<Class<? extends Annotation>, Annotation> hashMap = this._annotations;
+        if (hashMap == null) {
+            return "[null]";
+        }
+        return hashMap.toString();
+    }
+
+    /* access modifiers changed from: protected */
+    public final void _add(Annotation annotation) {
+        if (this._annotations == null) {
+            this._annotations = new HashMap<>();
+        }
+        this._annotations.put(annotation.annotationType(), annotation);
+    }
+}

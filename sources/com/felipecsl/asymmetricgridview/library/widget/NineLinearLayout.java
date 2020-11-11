@@ -1,0 +1,56 @@
+package com.felipecsl.asymmetricgridview.library.widget;
+
+import android.content.Context;
+import android.util.AttributeSet;
+import android.widget.LinearLayout;
+
+public class NineLinearLayout extends LinearLayout {
+    private final AnimatorProxy mProxy;
+
+    public NineLinearLayout(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        this.mProxy = AnimatorProxy.NEEDS_PROXY ? AnimatorProxy.wrap(this) : null;
+    }
+
+    public void setVisibility(int visibility) {
+        AnimatorProxy animatorProxy = this.mProxy;
+        if (animatorProxy != null) {
+            if (visibility == 8) {
+                clearAnimation();
+            } else if (visibility == 0) {
+                setAnimation(animatorProxy);
+            }
+        }
+        super.setVisibility(visibility);
+    }
+
+    public float getAlpha() {
+        if (AnimatorProxy.NEEDS_PROXY) {
+            return this.mProxy.getAlpha();
+        }
+        return super.getAlpha();
+    }
+
+    public void setAlpha(float alpha) {
+        if (AnimatorProxy.NEEDS_PROXY) {
+            this.mProxy.setAlpha(alpha);
+        } else {
+            super.setAlpha(alpha);
+        }
+    }
+
+    public float getTranslationX() {
+        if (AnimatorProxy.NEEDS_PROXY) {
+            return this.mProxy.getTranslationX();
+        }
+        return super.getTranslationX();
+    }
+
+    public void setTranslationX(float translationX) {
+        if (AnimatorProxy.NEEDS_PROXY) {
+            this.mProxy.setTranslationX(translationX);
+        } else {
+            super.setTranslationX(translationX);
+        }
+    }
+}

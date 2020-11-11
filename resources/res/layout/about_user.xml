@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent">
+    <androidx.cardview.widget.CardView android:id="@+id/about_user_card_view" android:layout_width="match_parent" android:layout_height="100dp" app:layout_constraintBottom_toBottomOf="0" app:layout_constraintEnd_toEndOf="0" app:layout_constraintStart_toStartOf="0" app:layout_constraintTop_toTopOf="0">
+        <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/about_user_constraint_layout_inside_of_card_view" android:layout_width="match_parent" android:layout_height="match_parent">
+            <androidx.appcompat.widget.LinearLayoutCompat android:orientation="horizontal" android:id="@+id/about_user_linear_layout_inside_the_card_view" android:layout_width="match_parent" android:layout_height="match_parent">
+                <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                    <androidx.appcompat.widget.LinearLayoutCompat android:orientation="vertical" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="0" app:layout_constraintStart_toEndOf="@+id/about_user_image" app:layout_constraintTop_toTopOf="0">
+                        <TextView android:textSize="18sp" android:textColor="@color/black" android:id="@+id/about_user_text" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/about_user_text"/>
+                        <TextView android:id="@+id/about_user_descriotion_id" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/about_user_description_text"/>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                    <p017de.hdodenhof.circleimageview.CircleImageView android:id="@+id/about_user_image" android:layout_width="48dp" android:layout_height="48dp" android:src="@drawable/baseline_face_black_48dp" app:layout_constraintBottom_toBottomOf="0" app:layout_constraintStart_toStartOf="0" app:layout_constraintTop_toTopOf="0"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

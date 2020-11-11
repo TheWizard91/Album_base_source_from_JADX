@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:shape="ring" android:thicknessRatio="1.9" android:useLevel="false" android:innerRadius="0dp">
+    <gradient android:startColor="@color/water_blue" android:endColor="@color/water_blue" android:angle="270"/>
+    <corners android:radius="0dp"/>
+    <stroke android:width="0.7dp" android:color="#b4b4b4"/>
+</shape>
